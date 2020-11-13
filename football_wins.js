@@ -38,7 +38,7 @@ d3.csv("football_stats.csv", function(data) {
       .range([ 0, width ]);
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x).ticks(5));
+      .call(d3.axisBottom(x).ticks(9));
 
     // Add Y axis
     var y = d3.scaleLinear()
