@@ -1,0 +1,324 @@
+Number of Regular Season Wins by NFL Team,,
+from 2009 to 2019,,
+,,
+Team, Wins,Season
+New England Patriots,14,2010
+New York Jets,11,2010
+Miami Dolphins,7,2010
+Buffalo Bills,4,2010
+Pittsburgh Steelers,12,2010
+Baltimore Ravens,12,2010
+Cleveland Browns,5,2010
+Cincinnati Bengals,4,2010
+Indianapolis Colts,10,2010
+Jacksonville Jaguars,8,2010
+Houston Texans,6,2010
+Tennessee Titans,6,2010
+Kansas City Chiefs,10,2010
+San Diego Chargers,9,2010
+Oakland Raiders,8,2010
+Denver Broncos,4,2010
+Philadelphia Eagles,10,2010
+New York Giants,10,2010
+Dallas Cowboys,6,2010
+Washington Redskins,6,2010
+Chicago Bears,11,2010
+Green Bay Packers,10,2010
+Detroit Lions,6,2010
+Minnesota Vikings,6,2010
+Atlanta Falcons,13,2010
+New Orleans Saints,11,2010
+Tampa Bay Buccaneers,10,2010
+Carolina Panthers,2,2010
+Seattle Seahawks,7,2010
+St. Louis Rams,7,2010
+San Francisco 49ers,6,2010
+Arizona Cardinals,5,2010
+New England Patriots,13,2011
+New York Jets,8,2011
+Miami Dolphins,6,2011
+Buffalo Bills,6,2011
+Baltimore Ravens,12,2011
+Pittsburgh Steelers,12,2011
+Cincinnati Bengals,9,2011
+Cleveland Browns,4,2011
+Houston Texans,10,2011
+Tennessee Titans,9,2011
+Jacksonville Jaguars,5,2011
+Indianapolis Colts,2,2011
+Denver Broncos,8,2011
+San Diego Chargers,8,2011
+Oakland Raiders,8,2011
+Kansas City Chiefs,7,2011
+New York Giants,9,2011
+Philadelphia Eagles,8,2011
+Dallas Cowboys,8,2011
+Washington Redskins,5,2011
+Green Bay Packers,15,2011
+Detroit Lions,10,2011
+Chicago Bears,8,2011
+Minnesota Vikings,3,2011
+New Orleans Saints,13,2011
+Atlanta Falcons,10,2011
+Carolina Panthers,6,2011
+Tampa Bay Buccaneers,4,2011
+San Francisco 49ers,13,2011
+Arizona Cardinals,8,2011
+Seattle Seahawks,7,2011
+St. Louis Rams,2,2011
+New England Patriots,12,2012
+Miami Dolphins,7,2012
+New York Jets,6,2012
+Buffalo Bills,6,2012
+Baltimore Ravens,10,2012
+Cincinnati Bengals,10,2012
+Pittsburgh Steelers,8,2012
+Cleveland Browns,5,2012
+Houston Texans,12,2012
+Indianapolis Colts,11,2012
+Tennessee Titans,6,2012
+Jacksonville Jaguars,2,2012
+Denver Broncos,13,2012
+San Diego Chargers,7,2012
+Oakland Raiders,4,2012
+Kansas City Chiefs,2,2012
+Washington Redskins,10,2012
+New York Giants,9,2012
+Dallas Cowboys,8,2012
+Philadelphia Eagles,4,2012
+Green Bay Packers,11,2012
+Minnesota Vikings,10,2012
+Chicago Bears,10,2012
+Detroit Lions,4,2012
+Atlanta Falcons,13,2012
+Carolina Panthers,7,2012
+New Orleans Saints,7,2012
+Tampa Bay Buccaneers,7,2012
+San Francisco 49ers,11,2012
+Seattle Seahawks,11,2012
+St. Louis Rams,7,2012
+Arizona Cardinals,5,2012
+New England Patriots,12,2013
+New York Jets,8,2013
+Miami Dolphins,8,2013
+Buffalo Bills,6,2013
+Cincinnati Bengals,11,2013
+Pittsburgh Steelers,8,2013
+Baltimore Ravens,8,2013
+Cleveland Browns,4,2013
+Indianapolis Colts,11,2013
+Tennessee Titans,7,2013
+Jacksonville Jaguars,4,2013
+Houston Texans,2,2013
+Denver Broncos,13,2013
+Kansas City Chiefs,11,2013
+San Diego Chargers,9,2013
+Oakland Raiders,4,2013
+Philadelphia Eagles,10,2013
+Dallas Cowboys,8,2013
+New York Giants,7,2013
+Washington Redskins,3,2013
+Green Bay Packers,8,2013
+Chicago Bears,8,2013
+Detroit Lions,7,2013
+Minnesota Vikings,5,2013
+Carolina Panthers,12,2013
+New Orleans Saints,11,2013
+Atlanta Falcons,4,2013
+Tampa Bay Buccaneers,4,2013
+Seattle Seahawks,13,2013
+San Francisco 49ers,12,2013
+Arizona Cardinals,10,2013
+St. Louis Rams,7,2013
+New England Patriots,12,2014
+Buffalo Bills,9,2014
+Miami Dolphins,8,2014
+New York Jets,4,2014
+Pittsburgh Steelers,11,2014
+Cincinnati Bengals,10,2014
+Baltimore Ravens,10,2014
+Cleveland Browns,7,2014
+Indianapolis Colts,11,2014
+Houston Texans,9,2014
+Jacksonville Jaguars,3,2014
+Tennessee Titans,2,2014
+Denver Broncos,12,2014
+San Diego Chargers,9,2014
+Kansas City Chiefs,9,2014
+Oakland Raiders,3,2014
+Dallas Cowboys,12,2014
+Philadelphia Eagles,10,2014
+New York Giants,6,2014
+Washington Redskins,4,2014
+Green Bay Packers,12,2014
+Detroit Lions,11,2014
+Minnesota Vikings,7,2014
+Chicago Bears,5,2014
+Carolina Panthers,7,2014
+New Orleans Saints,7,2014
+Atlanta Falcons,6,2014
+Tampa Bay Buccaneers,2,2014
+Seattle Seahawks,12,2014
+Arizona Cardinals,11,2014
+San Francisco 49ers,8,2014
+St. Louis Rams,6,2014
+New England Patriots,12,2015
+New York Jets,10,2015
+Buffalo Bills,8,2015
+Miami Dolphins,6,2015
+Cincinnati Bengals,12,2015
+Pittsburgh Steelers,10,2015
+Baltimore Ravens,5,2015
+Cleveland Browns,3,2015
+Houston Texans,9,2015
+Indianapolis Colts,8,2015
+Jacksonville Jaguars,5,2015
+Tennessee Titans,3,2015
+Denver Broncos,12,2015
+Kansas City Chiefs,11,2015
+Oakland Raiders,7,2015
+San Diego Chargers,4,2015
+Washington Redskins,9,2015
+Philadelphia Eagles,7,2015
+New York Giants,6,2015
+Dallas Cowboys,4,2015
+Minnesota Vikings,11,2015
+Green Bay Packers,10,2015
+Detroit Lions,7,2015
+Chicago Bears,6,2015
+Carolina Panthers,15,2015
+Atlanta Falcons,8,2015
+New Orleans Saints,7,2015
+Tampa Bay Buccaneers,6,2015
+Arizona Cardinals,13,2015
+Seattle Seahawks,10,2015
+St. Louis Rams,7,2015
+San Francisco 49ers,5,2015
+New England Patriots,14,2016
+Miami Dolphins,10,2016
+Buffalo Bills,7,2016
+New York Jets,5,2016
+Pittsburgh Steelers,11,2016
+Baltimore Ravens,8,2016
+Cincinnati Bengals,6,2016
+Cleveland Browns,1,2016
+Houston Texans,9,2016
+Tennessee Titans,9,2016
+Indianapolis Colts,8,2016
+Jacksonville Jaguars,3,2016
+Kansas City Chiefs,12,2016
+Oakland Raiders,12,2016
+Denver Broncos,9,2016
+San Diego Chargers,5,2016
+Dallas Cowboys,13,2016
+New York Giants,11,2016
+Washington Redskins,8,2016
+Philadelphia Eagles,7,2016
+Green Bay Packers,10,2016
+Detroit Lions,9,2016
+Minnesota Vikings,8,2016
+Chicago Bears,3,2016
+Atlanta Falcons,11,2016
+Tampa Bay Buccaneers,9,2016
+New Orleans Saints,7,2016
+Carolina Panthers,6,2016
+Seattle Seahawks,10,2016
+Arizona Cardinals,7,2016
+Los Angeles Rams,4,2016
+San Francisco 49ers,2,2016
+New England Patriots,13,2017
+Buffalo Bills,9,2017
+Miami Dolphins,6,2017
+New York Jets,5,2017
+Pittsburgh Steelers,13,2017
+Baltimore Ravens,9,2017
+Cincinnati Bengals,7,2017
+Cleveland Browns,0,2017
+Jacksonville Jaguars,10,2017
+Tennessee Titans,9,2017
+Indianapolis Colts,4,2017
+Houston Texans,4,2017
+Kansas City Chiefs,10,2017
+Los Angeles Chargers,9,2017
+Oakland Raiders,6,2017
+Denver Broncos,5,2017
+Philadelphia Eagles,13,2017
+Dallas Cowboys,9,2017
+Washington Redskins,7,2017
+New York Giants,3,2017
+Minnesota Vikings,13,2017
+Detroit Lions,9,2017
+Green Bay Packers,7,2017
+Chicago Bears,5,2017
+New Orleans Saints,11,2017
+Carolina Panthers,11,2017
+Atlanta Falcons,10,2017
+Tampa Bay Buccaneers,5,2017
+Los Angeles Rams,11,2017
+Seattle Seahawks,9,2017
+Arizona Cardinals,8,2017
+San Francisco 49ers,6,2017
+New England Patriots,11,2018
+Miami Dolphins,7,2018
+Buffalo Bills,6,2018
+New York Jets,4,2018
+Baltimore Ravens,10,2018
+Pittsburgh Steelers,9,2018
+Cleveland Browns,7,2018
+Cincinnati Bengals,6,2018
+Houston Texans,11,2018
+Indianapolis Colts,10,2018
+Tennessee Titans,9,2018
+Jacksonville Jaguars,5,2018
+Kansas City Chiefs,12,2018
+Los Angeles Chargers,12,2018
+Denver Broncos,6,2018
+Oakland Raiders,4,2018
+Dallas Cowboys,10,2018
+Philadelphia Eagles,9,2018
+Washington Redskins,7,2018
+New York Giants,5,2018
+Chicago Bears,12,2018
+Minnesota Vikings,8,2018
+Green Bay Packers,6,2018
+Detroit Lions,6,2018
+New Orleans Saints,13,2018
+Atlanta Falcons,7,2018
+Carolina Panthers,7,2018
+Tampa Bay Buccaneers,5,2018
+Los Angeles Rams,13,2018
+Seattle Seahawks,10,2018
+San Francisco 49ers,4,2018
+Arizona Cardinals,3,2018
+New England Patriots,12,2019
+Buffalo Bills,10,2019
+New York Jets,7,2019
+Miami Dolphins,5,2019
+Baltimore Ravens,14,2019
+Pittsburgh Steelers,8,2019
+Cleveland Browns,6,2019
+Cincinnati Bengals,2,2019
+Houston Texans,10,2019
+Tennessee Titans,9,2019
+Indianapolis Colts,7,2019
+Jacksonville Jaguars,6,2019
+Kansas City Chiefs,12,2019
+Denver Broncos,7,2019
+Oakland Raiders,7,2019
+Los Angeles Chargers,5,2019
+Philadelphia Eagles,9,2019
+Dallas Cowboys,8,2019
+New York Giants,4,2019
+Washington Redskins,3,2019
+Green Bay Packers,13,2019
+Minnesota Vikings,10,2019
+Chicago Bears,8,2019
+Detroit Lions,3,2019
+New Orleans Saints,13,2019
+Atlanta Falcons,7,2019
+Tampa Bay Buccaneers,7,2019
+Carolina Panthers,5,2019
+San Francisco 49ers,13,2019
+Seattle Seahawks,11,2019
+Los Angeles Rams,9,2019
+Arizona Cardinals,5,2019
