@@ -36,7 +36,7 @@ d3.csv("football_stats.csv", function(data) {
     var x = d3.scaleLinear()
       .domain(d3.extent(data, function(d) { return d.Year; }))
       .range([ 0, width ]);
-    svg.append("g")
+    var xAxis = svg.append("g")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x).ticks(9));
 
@@ -61,11 +61,15 @@ d3.csv("football_stats.csv", function(data) {
         .style("fill", "none")
 
     // A function that update the chart
-    function update(selectedGroup) {
-
+    function update(selectedGroup, startYear, endYear) {
       // Create new data with the selection?
       var dataFilter = data.filter(function(d){return d.Tm==selectedGroup})
-
+      console.log(dataFilter)
+      var dataFilter = dataFilter.filter(function(d) { return d.Year >= startYear && d.Year <= endYear})
+      var numTicks = dataFilter.length;
+      console.log(numTicks)
+      x.domain([startYear,endYear])
+      xAxis.transition().duration(1000).call(d3.axisBottom(x).ticks(numTicks))
       // Give these new data to update line
       console.log(dataFilter)
       line
@@ -78,13 +82,31 @@ d3.csv("football_stats.csv", function(data) {
           )
           .attr("stroke", function(d){ return myColor(selectedGroup) })
     }
-
     // When the button is changed, run the updateChart function
     d3.select("#selectButton").on("change", function(d) {
         // recover the option that has been chosen
         var selectedOption = d3.select(this).property("value")
         // run the updateChart function with this selected option
-        update(selectedOption)
+        startYear = document.getElementById("startYear").value
+        endYear = document.getElementById("endYear").value
+        update(selectedOption, startYear, endYear)
     })
+    d3.select("#startYear").on("change", function(d) {
+      // recover the option that has been chosen
+      var selectedOption = d3.select("#selectButton").property("value")
+      // run the updateChart function with this selected option
+      startYear = document.getElementById("startYear").value
+      endYear = document.getElementById("endYear").value
+      update(selectedOption, startYear, endYear)
+  })
+  d3.select("#endYear").on("change", function(d) {
+    // recover the option that has been chosen
+    var selectedOption = d3.select("#selectButton").property("value")
+    // run the updateChart function with this selected option
+    startYear = document.getElementById("startYear").value
+    endYear = document.getElementById("endYear").value
+    update(selectedOption, startYear, endYear)
+})
 
 })
+
