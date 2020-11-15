@@ -32,42 +32,42 @@ d3.csv("TeamData.csv", function(d) {
 
   temp.push({
   	axis: "PointsScored",
-  	value: d.PointsScored
+  	value: +d.PointsScored
   });
 
   temp.push({
   	axis: "Int",
-  	value: d.Int
+  	value: +d.Int
   });
 
   temp.push({
     axis: "TotalYds",
-    value: d.TotalYds
+    value: +d.TotalYds
   });
   
 
   temp.push({
     axis: "PassYds",
-    value: d.PassYds
+    value: +d.PassYds
   });
 
   temp.push({
     axis: "PassTD",
-    value: d.PassTD
+    value: +d.PassTD
   });
 
   temp.push({
     axis: "RushYds",
-    value: d.RushYds
+    value: +d.RushYds
  });
   temp.push({
     axis: "RushTD",
-    value: d.RushTD
+    value: +d.RushTD
  });
 
   return {
     name : d.Team,
-    year : d.Season,
+    Year : +d.Season,
     value: temp
   };
 },
@@ -75,15 +75,15 @@ function(error, rows){
    //console.log(rows); 
 
    var data = rows.filter(function(d){return d.name=="Los Angeles Rams"});
-      var data = data.filter(function(d){return d.year=="2019"})
-
+      var data = data.filter(function(d){return d.Year==2019})
+      console.log(data)
       datum = [];
       datum.push(data[0]['value']);
       console.log(datum);
       RadarChart(".radarChart", datum, radarChartOptions);
 
    var allGroup = d3.map(rows, function(d){return(d.name)}).keys()
-   console.log(allGroup)
+   //console.log(allGroup)
    d3.select("#selectButton")
       .selectAll('myOptions')
       .data(allGroup)
@@ -92,12 +92,15 @@ function(error, rows){
       .text(function (d) { return d; }) // text showed in the menu
       .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
-   function update(selectedGroup){
+   function update(selectedGroup, startYear, endYear){
       var data = rows.filter(function(d){return d.name==selectedGroup});
-      var data = data.filter(function(d){return d.year=="2019"})
-
+      console.log(startYear,endYear)
+      var data = data.filter(function(d){return d.Year >= startYear && d.Year <= endYear})
+      console.log(data)
+      var temp = Math.floor(Math.random() * (data.length - 0) + 0)
+      console.log(temp," temp")
       datum = [];
-      datum.push(data[0]['value']);
+      datum.push(data[temp]['value']);
       console.log(datum);
       RadarChart(".radarChart", datum, radarChartOptions);
    }
@@ -106,8 +109,26 @@ function(error, rows){
         // recover the option that has been chosen
         var selectedOption = d3.select(this).property("value")
         // run the updateChart function with this selected option
-        update(selectedOption)
+        startYear = document.getElementById("startYear").value
+        endYear = document.getElementById("endYear").value
+        update(selectedOption, startYear, endYear)
     })
+  d3.select("#startYear").on("change", function(d) {
+      // recover the option that has been chosen
+      var selectedOption = d3.select("#selectButton").property("value")
+      // run the updateChart function with this selected option
+      startYear = document.getElementById("startYear").value
+      endYear = document.getElementById("endYear").value
+      update(selectedOption, startYear, endYear)
+  })
+  d3.select("#endYear").on("change", function(d) {
+    // recover the option that has been chosen
+    var selectedOption = d3.select("#selectButton").property("value")
+    // run the updateChart function with this selected option
+    startYear = document.getElementById("startYear").value
+    endYear = document.getElementById("endYear").value
+    update(selectedOption, startYear, endYear)
+  })
 
 });
 
