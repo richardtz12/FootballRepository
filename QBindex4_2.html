@@ -1,0 +1,59 @@
+<!-- Code from d3-graph-gallery.com -->
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en">
+<!-- <body>
+    <div id="main">
+        <div style="position: absolute; top: 300px;">
+            <div>
+                <label for="categorySelect">Y Scale:</label>
+            </div>
+            <select class="custom-select small" id="yScaleSelect" onchange="onYScaleChanged()">
+              <option value="Cmp%">Cmp%</option>
+              <option value="Yds">Yds</option>
+              <option selected value="TD">TD</option>
+              <option value="Int">Int</option>
+              <option value="GWD">GWD</option>
+            </select>
+        </div>
+        <div style="margin-left: 160px;">
+            <svg width="600" height="600" style="border: 1px solid #777;">
+            </svg>
+        </div>
+        <div style="margin-left: 380px;">
+            <label for="categorySelect">X Scale:</label>
+            <select class="custom-select small" id="xScaleSelect" onchange="onXScaleChanged()">
+              <option selected value="Season">Season</option>
+            </select>
+        </div>
+    </div>
+</body> -->
+
+<body>
+    <select id="selectButton"></select>
+    <select id="yButton">
+<!--       <option value="Cmp%">Cmp%</option>
+      <option value="Yds">Yds</option>
+      <option selected value="TD">TD</option>
+      <option value="Int">Int</option>
+      <option value="GWD">GWD</option> -->
+    </select>
+    <input type="text" value="2010" id="startYear">
+    <input type="text" value="2019" id="endYear">
+
+        <div id="my_dataviz"></div>
+</body>
+
+
+<!-- Load in d3 version -->
+<script src="https://d3js.org/d3.v4.js"></script>
+<!-- Color Scale -->
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<!-- js Reference -->
+<script src="./QBmain4.js"></script>
+<script>
+    console.log('executed')
+</script>
+<script>
+</script>
+</html>
