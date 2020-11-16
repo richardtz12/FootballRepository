@@ -60,7 +60,7 @@ d3.csv("football_stats.csv", function(data) {
         .style("stroke-width", 4)
         .style("fill", "none")
 
-    var dot = svg
+    svg
     .selectAll('circle')
     .data(data.filter(function(d){return d.Tm==allGroup[0]}))
     .enter()
@@ -97,17 +97,42 @@ d3.csv("football_stats.csv", function(data) {
           )
           .attr("stroke", function(d){ return myColor(selectedGroup) })
 
-      svg.selectAll('circle')
+      // svg.selectAll('circle')
+      //   .data(dataFilter)
+      //   .enter()
+      //   .append('circle')
+      //     .attr('cx', function(d) {return x(data.Year)})
+      //     .attr('cy', function(d) {return y(+data.W)})
+      //     .attr('r',7)
+      //     .style('fill', 'black')
+      svg
+      .selectAll('circle')
+      .data(dataFilter)
+      .enter()
+      .append('circle')
+        .attr('cx', function(d) {return x(d.Year)})
+        .attr('cy', function(d) {return y(+d.W)})
+        .attr('r',7)
+        .style('fill', 'black')
+
+      svg
+      .selectAll('circle')
       .data(dataFilter)
       .exit()
-      .remove()
-
-      dot
+      .remove() 
+      
+      svg
+      .selectAll('circle')
       .data(dataFilter)
       .transition()
       .duration(1000)
         .attr("cx", function(d) { return x(+d.Year) })
         .attr("cy", function(d) { return y(+d.W) })
+
+      // svg.selectAll('circle')
+      // .data(dataFilter)
+      // .exit()
+      // .remove()
     }
     // When the button is changed, run the updateChart function
     d3.select("#selectButton").on("change", function(d) {
