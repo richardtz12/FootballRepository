@@ -60,16 +60,31 @@ d3.csv("football_stats.csv", function(data) {
         .style("stroke-width", 4)
         .style("fill", "none")
 
+    var dot = svg
+    .selectAll('circle')
+    .data(data.filter(function(d){return d.Tm==allGroup[0]}))
+    .enter()
+    .append('circle')
+      .attr('cx', function(d) {return x(d.Year)})
+      .attr('cy', function(d) {return y(+d.W)})
+      .attr('r',7)
+      .style('fill', 'black')
+
     // A function that update the chart
     function update(selectedGroup, startYear, endYear) {
       // Create new data with the selection?
+      
       var dataFilter = data.filter(function(d){return d.Tm==selectedGroup})
       console.log(dataFilter)
       var dataFilter = dataFilter.filter(function(d) { return d.Year >= startYear && d.Year <= endYear})
       var numTicks = dataFilter.length;
       console.log(numTicks)
       x.domain([startYear,endYear])
-      xAxis.transition().duration(1000).call(d3.axisBottom(x).ticks(numTicks))
+      if (numTicks == 1) { 
+        dataFilter.push(dataFilter[0])
+        dataFilter[1]
+      }
+      xAxis.transition().duration(1000).call(d3.axisBottom(x).ticks(numTicks - 1))
       // Give these new data to update line
       console.log(dataFilter)
       line
@@ -81,6 +96,18 @@ d3.csv("football_stats.csv", function(data) {
             .y(function(d) { return y(+d.W) })
           )
           .attr("stroke", function(d){ return myColor(selectedGroup) })
+
+      svg.selectAll('circle')
+      .data(dataFilter)
+      .exit()
+      .remove()
+
+      dot
+      .data(dataFilter)
+      .transition()
+      .duration(1000)
+        .attr("cx", function(d) { return x(+d.Year) })
+        .attr("cy", function(d) { return y(+d.W) })
     }
     // When the button is changed, run the updateChart function
     d3.select("#selectButton").on("change", function(d) {
