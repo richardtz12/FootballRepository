@@ -12,6 +12,31 @@ var svg = d3.select("#my_dataviz")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
+var Tooltip = d3.select("#my_dataviz")
+.append("div")
+.style("opacity", 0)
+.attr("class", "tooltip")
+.style("background-color", "white")
+.style("border", "solid")
+.style("border-width", "2px")
+.style("border-radius", "5px")
+.style("padding", "5px")
+
+// Three function that change the tooltip when user hover / move / leave a cell
+var mouseover = function(d) {
+  Tooltip
+    .style("opacity", 1)
+}
+var mousemove = function(d) {
+  Tooltip
+    .html("Wins:" + d.W + "<br>" + "Losses:" + d.L + "<br>" + "Win Loss Percentage:" + d.WL * 100 + "%" + "<br>" + "Points For:" + d.PF + "<br>" + "Points Against:" + d.PA + "  ")
+    .style("left", (d3.mouse(this)[0]+70) + "px")
+    .style("top", (d3.mouse(this)[1]) + "px")
+}
+var mouseleave = function(d) {
+  Tooltip
+    .style("opacity", 0)
+}
 //Read the data
 d3.csv("football_stats.csv", function(data) {
 
@@ -47,6 +72,14 @@ d3.csv("football_stats.csv", function(data) {
     svg.append("g")
       .call(d3.axisLeft(y));
 
+
+    d3.select('body')
+      .select('svg')
+      .append('text')
+      .attr('class', 'x label')
+      .attr('transform', 'translate(250,720)')
+      .text("Habital Zone Distance")
+      .attr("fill", "white")
     // Initialize line with first group of the list
     var line = svg
       .append('g')
@@ -68,7 +101,12 @@ d3.csv("football_stats.csv", function(data) {
       .attr('cx', function(d) {return x(d.Year)})
       .attr('cy', function(d) {return y(+d.W)})
       .attr('r',7)
-      .style('fill', 'black')
+      .attr("stroke", "#69b3a2")
+      .attr("stroke-width", 3)
+      .attr("fill", "white")
+    .on("mouseover", mouseover)
+    .on("mousemove", mousemove)
+    .on("mouseleave", mouseleave)
 
     // A function that update the chart
     function update(selectedGroup, startYear, endYear) {
@@ -97,14 +135,6 @@ d3.csv("football_stats.csv", function(data) {
           )
           .attr("stroke", function(d){ return myColor(selectedGroup) })
 
-      // svg.selectAll('circle')
-      //   .data(dataFilter)
-      //   .enter()
-      //   .append('circle')
-      //     .attr('cx', function(d) {return x(data.Year)})
-      //     .attr('cy', function(d) {return y(+data.W)})
-      //     .attr('r',7)
-      //     .style('fill', 'black')
       svg
       .selectAll('circle')
       .data(dataFilter)
@@ -113,7 +143,12 @@ d3.csv("football_stats.csv", function(data) {
         .attr('cx', function(d) {return x(d.Year)})
         .attr('cy', function(d) {return y(+d.W)})
         .attr('r',7)
-        .style('fill', 'black')
+        .attr("stroke", "#69b3a2")
+        .attr("stroke-width", 3)
+        .attr("fill", "white")
+      .on("mouseover", mouseover)
+      .on("mousemove", mousemove)
+      .on("mouseleave", mouseleave)
 
       svg
       .selectAll('circle')
@@ -128,6 +163,13 @@ d3.csv("football_stats.csv", function(data) {
       .duration(1000)
         .attr("cx", function(d) { return x(+d.Year) })
         .attr("cy", function(d) { return y(+d.W) })
+        .attr('r',7)
+        .attr("stroke", "#69b3a2")
+        .attr("stroke-width", 3)
+        .attr("fill", "white")
+      .on("mouseover", mouseover)
+      .on("mousemove", mousemove)
+      .on("mouseleave", mouseleave)
 
       // svg.selectAll('circle')
       // .data(dataFilter)
