@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Football Teams Wins/Losses From 2010 - 2019</title>
+    <link rel="stylesheet" href="./style.css">
+      <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300" rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
+    <!-- D3.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+
+    <style>
+      body {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 11px;
+        font-weight: 300;
+        fill: #242424;
+        text-align: center;
+        text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+        cursor: default;
+      }
+
+      .legend {
+        font-family: 'Raleway', sans-serif;
+        fill: #333333;
+      }
+
+      .tooltip {
+        fill: #333333;
+      }
+    </style>
+    <div>
+        <label for="teamSelect">Team:</label>
+        <select id="selectButton"></select>
+
+        <label for="startSelect">Start Year:</label>
+        <input type="text" value="2010" id="startYear">
+
+        <label for="endSelect">End Year:</label>
+        <input type="text" value="2019" id="endYear">
+    </div>
+</head>
+<body>
+    <div id="my_dataviz_player" class="part4"></div>
+    <div id="wins_Bars" class="part2"></div>
+    <div class="radarChart part3"></div>
+    <div id="my_dataviz" class="part1"></div>
+
+
+    <div id="main">
+        <div style="position: absolute; top: 20px; left: 430px;">
+            <label>Quarterback Comparison</label>
+        </div>
+        <div style="position: absolute; top: 200px; left: 60px;">
+            <div>
+                <label for="categorySelect">Player:</label>
+            </div>
+            <div>
+                <select id="selectButton_player"></select>
+            </div>
+            <div>
+                <label for="categorySelect">Y Scale:</label>
+            </div>
+            <select id = "categoryButton">
+            </select>
+        </div>
+        <div style="position: absolute; top: 390px; left: 470px;">
+            <div>
+                <label for="categorySelect">Year</label>
+            </div>
+        </div>
+        <div style="position: absolute; top: 490px; left: 445px;">
+            <label>Team Overview</label>
+        </div>
+        <div style="position: absolute; top: 490px; left: 1400px;">
+            <label>Team Wins by Season</label>
+        </div>
+        <div style="position: absolute; top: 720px; left: 1220px;">
+            <div>
+                <label for="categorySelect">Year</label>
+            </div>
+        </div>
+        <div style="position: absolute; top: 920px; left: 1445px;">
+            <div>
+                <label for="categorySelect">Wins</label>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://d3js.org/d3.v4.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script src="./football_wins.js"></script>
+
+<script>
+    console.log('executed')
+</script>
+<script>
+</script>
+</html>

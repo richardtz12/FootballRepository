@@ -45,9 +45,9 @@ function draw(selectdiv1,selectdiv2,selectdiv3){
 
 function dylan(selectdiv3){
 
-      var margin = {top: 10, right: 30, bottom: 30, left: 100},
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+      var margin = {top: 10, right: 30, bottom: 30, left: 30},
+      width = 460 - margin.left - margin.right,
+      height = 360 - margin.top - margin.bottom;
 
       // append the svg object to the body of the page
       var svg = d3.select(selectdiv3)
@@ -189,7 +189,7 @@ function dylan(selectdiv3){
               x.domain([startYear,endYear])
               xAxis.transition().duration(1000).call(d3.axisBottom(x).ticks(numTicks))
 
-              
+
               // Give these new data to update line
               console.log(dataFilter)
               console.log("hi")
@@ -201,38 +201,38 @@ function dylan(selectdiv3){
                   .attr("d", d3.line()
                       .x(function(d) { return x(d.Season) })
                       // .y(function(d) { return y(+d.Int) })
-                      .y(function(d) { 
-                        if (category == "Int") { 
+                      .y(function(d) {
+                        if (category == "Int") {
                           y.domain([0, d3.max(data, function(d) { return +d.Int; })])
                           .range([ height, 0 ]);
                           yAxis.transition().duration(1000).call(d3.axisLeft(y))
                           return y(d.Int)
                         }
-                        if (category == "Yds") { 
+                        if (category == "Yds") {
                           y.domain([0, d3.max(data, function(d) { return +d.Yds; })])
                           .range([ height, 0 ]);
                           yAxis.transition().duration(1000).call(d3.axisLeft(y))
                           return y(d.Yds)
                         }
-                        if (category == "GWD") { 
+                        if (category == "GWD") {
                           y.domain([0, d3.max(data, function(d) { return +d.GWD; })])
                           .range([ height, 0 ]);
                           yAxis.transition().duration(1000).call(d3.axisLeft(y))
                           return y(d.GWD)
                         }
-                        if (category == "TD") { 
+                        if (category == "TD") {
                           y.domain([0, d3.max(data, function(d) { return +d.TD; })])
                           .range([ height, 0 ]);
                           yAxis.transition().duration(1000).call(d3.axisLeft(y))
                           return y(d.TD)
                         }
-                        if (category == "Cmp%") { 
+                        if (category == "Cmp%") {
                           y.domain([0, d3.max(data, function(d) { return +d.Cmpp; })])
                           .range([ height, 0 ]);
                           yAxis.transition().duration(1000).call(d3.axisLeft(y))
                           return y(d.Cmpp)
                         }
-                      }) 
+                      })
                   )
                   .attr("stroke", function(d){ return myColor(selectedPlayer) })
 
@@ -253,16 +253,16 @@ function dylan(selectdiv3){
                         if (category == "Int") {
                           return y(+d.Int)
                         }
-                        if (category == "Yds") { 
+                        if (category == "Yds") {
                           return y(+d.Yds)
                         }
-                        if (category == "GWD") { 
+                        if (category == "GWD") {
                           return y(+d.GWD)
                         }
-                        if (category == "TD") { 
+                        if (category == "TD") {
                           return y(+d.TD)
                         }
-                        if (category == "Cmp%") { 
+                        if (category == "Cmp%") {
                           return y(+d.Cmpp)
                         }
                       })
@@ -286,19 +286,19 @@ function dylan(selectdiv3){
                   .duration(1000)
                       .attr("cx", function(d) { return x(+d.Season) })
                       .attr('cy', function(d) {
-                        if (category == "Int") { 
+                        if (category == "Int") {
                           return y(+d.Int)
                         }
-                        if (category == "Yds") { 
+                        if (category == "Yds") {
                           return y(+d.Yds)
                         }
-                        if (category == "GWD") { 
+                        if (category == "GWD") {
                           return y(+d.GWD)
                         }
-                        if (category == "TD") { 
+                        if (category == "TD") {
                           return y(+d.TD)
                         }
-                        if (category == "Cmp%") { 
+                        if (category == "Cmp%") {
                           return y(+d.Cmpp)
                         }
                       })}
@@ -462,14 +462,14 @@ function dylan(selectdiv3){
           // A function that update the chart
           function update(selectedGroup, startYear, endYear) {
             // Create new data with the selection?
-            
+
             var dataFilter = data.filter(function(d){return d.Tm==selectedGroup})
             console.log(dataFilter)
             var dataFilter = dataFilter.filter(function(d) { return d.Year >= startYear && d.Year <= endYear})
             var numTicks = dataFilter.length;
             console.log(numTicks)
             x.domain([startYear,endYear])
-            if (numTicks == 1) { 
+            if (numTicks == 1) {
               dataFilter.push(dataFilter[0])
               dataFilter[1]
             }
@@ -505,8 +505,8 @@ function dylan(selectdiv3){
             .selectAll('circle')
             .data(dataFilter)
             .exit()
-            .remove() 
-            
+            .remove()
+
             svg
             .selectAll('circle')
             .data(dataFilter)
@@ -558,24 +558,24 @@ function dylan(selectdiv3){
   }
 
   function dhav(selectdiv2){
-      
-      
-      ////////////////////////////////////////////////////////////// 
-      //////////////////////// Set-Up ////////////////////////////// 
-      ////////////////////////////////////////////////////////////// 
 
-        var margin = {top: 100, right: 100, bottom: 100, left: 100},
+
+      //////////////////////////////////////////////////////////////
+      //////////////////////// Set-Up //////////////////////////////
+      //////////////////////////////////////////////////////////////
+
+        var margin = {top: 50, right: 100, bottom: 100, left: 100},
         width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
         height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
-          
-      
+
+
 
       var color = d3.scale.ordinal()
         .range(["#EDC951","#CC333F","#00A0B0"]);
-        
+
       var radarChartOptions = {
-        w: width,
-        h: height,
+        w: width *0.70,
+        h: height *0.70,
         margin: margin,
         maxValue: 0.5,
         levels: 5,
@@ -583,7 +583,7 @@ function dylan(selectdiv3){
         color: color
       };
       //Call function to draw the Radar chart
-      
+
 
 
 d3.csv("TeamData.csv", function(d) {
@@ -603,7 +603,7 @@ d3.csv("TeamData.csv", function(d) {
     axis: "TotalYds",
     value: +d.TotalYds
   });
-  
+
 
   temp.push({
     axis: "PassYds",
@@ -631,7 +631,7 @@ d3.csv("TeamData.csv", function(d) {
   };
 },
 function(error, rows){
-   //console.log(rows); 
+   //console.log(rows);
 
    var data = rows.filter(function(d){return d.name=="Los Angeles Rams"});
       var data = data.filter(function(d){return d.Year==2019})
@@ -651,7 +651,7 @@ function(error, rows){
       .text(function (d) { return d; }) // text showed in the menu
       .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
-   
+
    function update(selectedGroup, startYear, endYear){
       var data = rows.filter(function(d){return d.name==selectedGroup});
       console.log(startYear,endYear)
@@ -715,48 +715,48 @@ function RadarChart(id, data, options) {
    roundStrokes: false, //If true the area and stroke will follow a round path (cardinal-closed)
    color: d3.scale.category10() //Color function
   };
-  
+
   //Put all of the options into a variable called cfg
   if('undefined' !== typeof options){
     for(var i in options){
     if('undefined' !== typeof options[i]){ cfg[i] = options[i]; }
     }//for i
   }//if
-  
+
   //If the supplied maxValue is smaller than the actual one, replace by the max in the data
   var maxValue = Math.max(cfg.maxValue, d3.max(data, function(i){return d3.max(i.map(function(o){return o.value;}))}));
-    
+
   var allAxis = (data[0].map(function(i, j){return i.axis})), //Names of each axis
     total = allAxis.length,         //The number of different axes
     radius = Math.min(cfg.w/2, cfg.h/2),  //Radius of the outermost circle
     Format = d3.format('%'),        //Percentage formatting
     angleSlice = Math.PI * 2 / total;   //The width in radians of each "slice"
-  
+
   //Scale for the radius
   var rScale = d3.scale.linear()
     .range([0, radius])
     .domain([0, maxValue]);
-    
+
   /////////////////////////////////////////////////////////
   //////////// Create the container SVG and g /////////////
   /////////////////////////////////////////////////////////
 
   //Remove whatever chart with the same id/class was present before
   d3.select(id).select("svg").remove();
-  
+
   //Initiate the radar chart SVG
   var svg = d3.select(id).append("svg")
       .attr("width",  cfg.w + cfg.margin.left + cfg.margin.right)
       .attr("height", cfg.h + cfg.margin.top + cfg.margin.bottom)
       .attr("class", "radar"+id);
-  //Append a g element    
+  //Append a g element
   var g = svg.append("g")
       .attr("transform", "translate(" + (cfg.w/2 + cfg.margin.left) + "," + (cfg.h/2 + cfg.margin.top) + ")");
-  
+
   /////////////////////////////////////////////////////////
   ////////// Glow filter for some extra pizzazz ///////////
   /////////////////////////////////////////////////////////
-  
+
   //Filter for the outside glow
   var filter = g.append('defs').append('filter').attr('id','glow'),
     feGaussianBlur = filter.append('feGaussianBlur').attr('stdDeviation','2.5').attr('result','coloredBlur'),
@@ -767,10 +767,10 @@ function RadarChart(id, data, options) {
   /////////////////////////////////////////////////////////
   /////////////// Draw the Circular grid //////////////////
   /////////////////////////////////////////////////////////
-  
+
   //Wrapper for the grid & axes
   var axisGrid = g.append("g").attr("class", "axisWrapper");
-  
+
   //Draw the background circles
   axisGrid.selectAll(".levels")
      .data(d3.range(1,(cfg.levels+1)).reverse())
@@ -798,7 +798,7 @@ function RadarChart(id, data, options) {
   /////////////////////////////////////////////////////////
   //////////////////// Draw the axes //////////////////////
   /////////////////////////////////////////////////////////
-  
+
   //Create the straight lines radiating outward from the center
   var axis = axisGrid.selectAll(".axis")
     .data(allAxis)
@@ -829,24 +829,24 @@ function RadarChart(id, data, options) {
   /////////////////////////////////////////////////////////
   ///////////// Draw the radar chart blobs ////////////////
   /////////////////////////////////////////////////////////
-  
+
   //The radial line function
   var radarLine = d3.svg.line.radial()
     .interpolate("linear-closed")
     .radius(function(d) { return rScale(d.value); })
     .angle(function(d,i) {  return i*angleSlice; });
-    
+
   if(cfg.roundStrokes) {
     radarLine.interpolate("cardinal-closed");
   }
-        
-  //Create a wrapper for the blobs  
+
+  //Create a wrapper for the blobs
   var blobWrapper = g.selectAll(".radarWrapper")
     .data(data)
     .enter().append("g")
     .attr("class", "radarWrapper");
-      
-  //Append the backgrounds  
+
+  //Append the backgrounds
   blobWrapper
     .append("path")
     .attr("class", "radarArea")
@@ -857,11 +857,11 @@ function RadarChart(id, data, options) {
       //Dim all blobs
       d3.selectAll(".radarArea")
         .transition().duration(200)
-        .style("fill-opacity", 0.1); 
+        .style("fill-opacity", 0.1);
       //Bring back the hovered over blob
       d3.select(this)
         .transition().duration(200)
-        .style("fill-opacity", 0.7);  
+        .style("fill-opacity", 0.7);
     })
     .on('mouseout', function(){
       //Bring back all blobs
@@ -869,16 +869,16 @@ function RadarChart(id, data, options) {
         .transition().duration(200)
         .style("fill-opacity", cfg.opacityArea);
     });
-    
-  //Create the outlines 
+
+  //Create the outlines
   blobWrapper.append("path")
     .attr("class", "radarStroke")
     .attr("d", function(d,i) { return radarLine(d); })
     .style("stroke-width", cfg.strokeWidth + "px")
     .style("stroke", function(d,i) { return cfg.color(i); })
     .style("fill", "none")
-    .style("filter" , "url(#glow)");    
-  
+    .style("filter" , "url(#glow)");
+
   //Append the circles
   blobWrapper.selectAll(".radarCircle")
     .data(function(d,i) { return d; })
@@ -893,13 +893,13 @@ function RadarChart(id, data, options) {
   /////////////////////////////////////////////////////////
   //////// Append invisible circles for tooltip ///////////
   /////////////////////////////////////////////////////////
-  
+
   //Wrapper for the invisible circles on top
   var blobCircleWrapper = g.selectAll(".radarCircleWrapper")
     .data(data)
     .enter().append("g")
     .attr("class", "radarCircleWrapper");
-    
+
   //Append a set of invisible circles on top for the mouseover pop-up
   blobCircleWrapper.selectAll(".radarInvisibleCircle")
     .data(function(d,i) { return d; })
@@ -913,7 +913,7 @@ function RadarChart(id, data, options) {
     .on("mouseover", function(d,i) {
       newX =  parseFloat(d3.select(this).attr('cx')) - 10;
       newY =  parseFloat(d3.select(this).attr('cy')) - 10;
-          
+
       tooltip
         .attr('x', newX)
         .attr('y', newY)
@@ -925,18 +925,18 @@ function RadarChart(id, data, options) {
       tooltip.transition().duration(200)
         .style("opacity", 0);
     });
-    
+
   //Set up the small tooltip for when you hover over a circle
   var tooltip = g.append("text")
     .attr("class", "tooltip")
     .style("opacity", 0);
-  
+
   /////////////////////////////////////////////////////////
   /////////////////// Helper Function /////////////////////
   /////////////////////////////////////////////////////////
 
   //Taken from http://bl.ocks.org/mbostock/7555321
-  //Wraps SVG text  
+  //Wraps SVG text
   function wrap(text, width) {
     text.each(function() {
     var text = d3.select(this),
@@ -949,7 +949,7 @@ function RadarChart(id, data, options) {
       x = text.attr("x"),
       dy = parseFloat(text.attr("dy")),
       tspan = text.text(null).append("tspan").attr("x", x).attr("y", y).attr("dy", dy + "em");
-      
+
     while (word = words.pop()) {
       line.push(word);
       tspan.text(line.join(" "));
@@ -961,7 +961,7 @@ function RadarChart(id, data, options) {
       }
     }
     });
-  }//wrap 
+  }//wrap
 }//RadarChart
 
   }
