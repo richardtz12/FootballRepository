@@ -1,0 +1,57 @@
+<!-- Code from d3-graph-gallery.com -->
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en">
+
+<!-- Initialize a select button -->
+<select id="selectButton"></select>
+
+<body>
+    <div id="main">
+        <div style="position: absolute; top: 300px;">
+            <div>
+                <label for="categorySelect">Y Scale:</label>
+            </div>
+            <select class="custom-select small" id="yScaleSelect" onchange="onYScaleChanged()">
+              <option value="Cmp%">Cmp%</option>
+              <option value="Yds">Yds</option>
+              <option selected value="TD">TD</option>
+              <option value="Int">Int</option>
+              <option value="GWD">GWD</option>
+            </select>
+        </div>
+        <div style="margin-left: 100px;">
+            <svg width="600" height="600" style="border: 1px solid #777;">
+            </svg>
+        </div>
+        <div style="margin-left: 380px;">
+            <label >Season</label>
+        </div>
+    </div>
+</body>
+
+<!-- Load d3.js -->
+<!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
+<script src="https://d3js.org/d3.v5.min.js"></script>
+
+
+<!-- Option 2: -->
+<script src="./QBmain3.js"></script>
+
+
+
+
+
+<!-- <select id="selectButton"></select> -->
+
+<!-- <select id="selectButton"></select> -->
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+
+<!-- Color Scale -->
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+<script>
+    console.log('executed')
+</script>
