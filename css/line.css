@@ -1,0 +1,70 @@
+.line-plot {
+    fill: none;
+    stroke-width: 1.5px;
+    stroke: #333;
+}
+
+.company-label {
+    text-anchor: middle;
+    font-size: 20px;
+    font-weight: semibold;
+    opacity: 0.8;
+}
+
+.axis-label {
+    text-anchor: middle;
+    font-size: 12px;
+    font-weight: semibold;
+}
+
+.grid path,
+.grid line {
+    stroke: #fff;
+}
+
+.background {
+    fill: #e74a3b;
+}
+
+body {
+    font-family: "Open Sans";
+    margin: 0;
+}
+
+#main {
+    margin: 20px;
+}
+
+.legend {
+    font-family: 'Raleway', sans-serif;
+    fill: #333333;
+}
+
+.tooltip {
+    fill: #333333;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+.graph-svg-component {
+    background-color: white;
+}
+
+.line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+}
+.zoom {
+cursor: move;
+fill: none;
+pointer-events: all;
+}

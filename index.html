@@ -1,3 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Hardware counter Vis</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Information Visualization<sup>7450</sup></div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span></a>
+      </li>
+      
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800">Dashboard</h1>
+          <p class="mb-4">Dummy Data used for representation and illustration only on Public Repository!</p>
+          <!-- Content Row -->
+          <div class="row">
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Counter 1</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Articles: 9879</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Counter 2</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Articles: 9879</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Counter 3</div>
+                      <div class="row no-gutters align-items-center">
+                        <div class="col-auto">
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">Articles: 9879</div>
+                        </div>
+                        <div class="col">
+                          <div class="progress progress-sm mr-2">
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Counter 4</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Articles: 9879</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+                 <select id="selectButton"></select>
+                <select id="selectButton_player"></select>
+                <input type="text" value="2010" id="startYear">
+                <input type="text" value="2019" id="endYear">
+          <!-- Content Row1 -->
+
+          <div class="row">
+            <!-- Area Chart -->
+            <div class="col-lg-5" >
+              
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-0 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Counter 1</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div id="my_dataviz"></div>
+                    </div>
+                </div>
+              </div>
+
+              <div class="col-lg-5" >
+              
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-0 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Counter 2</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="radarChart"></div>
+                    </div>
+                </div>
+              </div>
+            
+          </div>
+
+          <div class="row">
+            <!-- Area Chart -->
+            <div class="col-lg-5" >
+              
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-0 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Counter 3</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div style="position: absolute; top: 200px;">
+                <div>
+                    <label for="categorySelect">Y Scale:</label>
+                </div>
+                <select id = "categoryButton">
+                </select>
+                </div>
+                    <div id="my_dataviz_player"></div>
+                    </div>
+                </div>
+              </div>
+            <div class="col-lg-5" >
+              
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-0 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Counter 4</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div id="myAreaChart4">
+                    </div>
+                </div>
+              </div>
+          </div>
+
+
+        </div>
+        <!-- End of Main Content -->
+      </div>
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+ 
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Load d3.js Library-->
+  
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+  <!-- Load d3.js Files-->
+  
+ 
+
+  <!-- Page level custom scripts -->
+  
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -11,51 +292,12 @@
     <!-- D3.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
     
-    <style>
-      body {
-        font-family: 'Open Sans', sans-serif;
-        font-size: 11px;
-        font-weight: 300;
-        fill: #242424;
-        text-align: center;
-        text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
-        cursor: default;
-      }
-      
-      .legend {
-        font-family: 'Raleway', sans-serif;
-        fill: #333333;
-      }
-      
-      .tooltip {
-        fill: #333333;
-      }
-    </style>
+    
 </head>
 <body>
-    <select id="selectButton"></select>
-    <select id="selectButton_player"></select>
-    <input type="text" value="2010" id="startYear">
-    <input type="text" value="2019" id="endYear">
+   
 
-        <div id="my_dataviz"></div>
-        <div class="radarChart"></div>
-        <div id="my_dataviz_player"></div>
-
-        <div id="main">
-            <div style="position: absolute; top: 200px;">
-                <div>
-                    <label for="categorySelect">Y Scale:</label>
-                </div>
-                <select id = "categoryButton">
-                </select>
-            </div>
-            <div style="position: absolute; top: 450px; left: 250px;">
-                <div>
-                    <label for="categorySelect">Year</label>
-                </div>
-            </div>
-        </div>
+        
          
 </body>
 <script src="https://d3js.org/d3.v4.js"></script>
