@@ -1,0 +1,325 @@
+<html>
+
+    <body>
+        <form>
+            <input type="text" value="2010" id="startYear">
+            <input type="text" value="2019" id="endYear">
+        </form>
+        </body>
+        <style>
+            body {
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                width: 960px;
+                height: 500px;
+                position: relative;
+            }
+            svg {
+                width: 100%;
+                height: 100%;
+                position: center;
+            }
+        
+            path.slice{
+                stroke-width:2px;
+            }
+        
+            text{
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            }
+        
+            polyline{
+                opacity: .3;
+                stroke: black;
+                stroke-width: 2px;
+                fill: none;
+            }
+        
+            .labelValue
+            {
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                font-size: 60%;
+                opacity: .5;
+        
+            }
+        
+            label {
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                font-weight: normal;
+            }
+        
+            .toolTip {
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                position: absolute;
+                display: none;
+                width: auto;
+                height: auto;
+                background: none repeat scroll 0 0 white;
+                border: 0 none;
+                border-radius: 8px 8px 8px 8px;
+                box-shadow: -3px 3px 15px #888888;
+                color: black;
+                font: 12px sans-serif;
+                padding: 5px;
+                text-align: center;
+            }
+        
+        
+            .legend {
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                font-size: 60%;
+            }
+            rect {
+                stroke-width: 2;
+            }
+        
+            text {
+                font: 10px sans-serif;
+            }
+        
+        
+            text.value{
+                font-size: 200%;
+                fill: white;
+            }
+        
+            text.label{
+                font-size: 100%;
+            }
+        
+            .axis text {
+                font: 10px sans-serif;
+            }
+        
+            .axis path{
+                fill: none;
+                stroke: #000;
+            }
+        
+            .axis line {
+                fill: none;
+                stroke: #000;
+                shape-rendering: crispEdges;
+            }
+        
+            .axis .tick line {
+                stroke-width: 1;
+                stroke: rgba(0, 0, 0, 0.2);
+            }
+        
+            .axisHorizontal path{
+                fill: none;
+            }
+        
+            .axisHorizontal line {
+                fill: none;
+                stroke: #000;
+                shape-rendering: crispEdges;
+            }
+        
+            .axisHorizontal .tick line {
+                stroke-width: 1;
+                stroke: rgba(0, 0, 0, 0.2);
+            }
+        
+            .bar {
+                fill: steelblue;
+                fill-opacity: .9;
+            }
+        
+            .x.axis path {
+                display: none;
+            }
+        </style>
+        <script src="https://d3js.org/d3.v3.js"></script>
+    <script>
+    d3.csv("football_stats.csv", function(data) {
+
+    // List of groups (here I have one group per column)
+    datasetTotal = data 
+    // add the options to the button
+
+    var margin = {
+            top: (parseInt(d3.select('body').style('height'), 10) / 20),
+            right: (parseInt(d3.select('body').style('width'), 10) / 20),
+            bottom: (parseInt(d3.select('body').style('height'), 10) / 20),
+            left: (parseInt(d3.select('body').style('width'), 10) / 5)
+        },
+        width = parseInt(d3.select('body').style('width'), 10) - margin.left - margin.right,
+        height = parseInt(d3.select('body').style('height'), 10) - margin.top - margin.bottom;
+
+    var div = d3.select("body").append("div").attr("class", "toolTip");
+
+    var formatPercent = d3.format("");
+
+    var y = d3.scale.ordinal()
+        .rangeRoundBands([height, 0], .2, 0.5);
+
+    var x = d3.scale.linear()
+        .range([0, width]);
+
+    var xAxis = d3.svg.axis()
+        .scale(x)
+        .tickSize(-height)
+        .orient("bottom");
+
+    var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left");
+    //.tickFormat(formatPercent);
+
+    var svg = d3.select("body").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+
+    change(datasetTotal, 2010, 2019);
+
+    function change(dataset, startYear, endYear) {
+
+        console.log(dataset)
+        var dataFilter = dataset.filter(function(d){return d.Year >= startYear && d.Year <= endYear})
+        console.log(dataFilter)
+
+        var numWins = d3.nest()
+        .key(function(d) { return d.Tm; })
+        .rollup(function(v) { return d3.sum(v, function(d) {return d.W}) })
+        .entries(dataFilter);
+
+        var dict = {};
+        var addPair = function (myKey, myValue) {
+            if (myKey in dict) {
+                dict[myKey] = dict[myKey] + parseInt(myValue);
+            } else { 
+                dict[myKey] = parseInt(myValue);
+            }
+        };
+        var giveValue = function (myKey) {
+        return dict[myKey];
+        };
+        for (i in dataFilter) { 
+            // console.log(dataFilter[i])
+            addPair(dataFilter[i].Tm, dataFilter[i].W)
+        }
+        console.log("dict")
+        console.log(dict)
+
+        console.log(numWins)
+        console.log(d3.max(numWins))
+        console.log(d3.max(numWins).values)
+
+        dataset = dataFilter
+        y.domain(dataset.map(function(d) {
+            return d.Tm;
+        }));
+        x.domain([0, d3.max(numWins).values + 6
+        ]);
+				
+		svg.select(".y.axis").remove();
+        svg.select(".x.axis").remove();
+
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis);
+
+        svg.append("g")
+            .attr("class", "y axis")
+            .call(yAxis)
+            .append("text")
+            .attr("transform", "rotate(0)")
+            .attr("x", 50)
+            .attr("dx", ".1em")
+            .style("text-anchor", "end")
+            .text("Wins");
+
+        var bar = svg.selectAll(".bar")
+            .data(dataset, function(d) {
+                return d.Tm;
+            });
+						
+				var barExit = bar.exit().remove();
+						
+        var barEnter = bar.enter()
+						.append("g")
+						.attr("class", "bar");
+
+        var barRects = barEnter.append("rect")
+            .attr("x", function(d) {
+            return x(0);
+        })
+        .attr("y", function(d) {
+            return y(d.Tm);
+        })
+        .attr("width", function(d) {
+            return x(dict[d.Tm]);
+        })
+        .attr("height", y.rangeBand());
+
+        var barTexts = barEnter.append("text")
+            .attr("x", function(d) {
+                return x(dict[d.Tm]) + 10;
+            })
+            .attr("y", function(d) {
+                return y(d.Tm) + y.rangeBand() / 2;
+            })
+            .attr("dy", ".35em")
+            .text(function(d) {
+                return dict[d.Tm];
+            });
+						
+			 var barRectUpdate = bar.select("rect")
+			     .transition()
+           .duration(750)
+           .attr("x", function(d) {
+            return x(0);
+        })
+        .attr("y", function(d) {
+            return y(d.Tm);
+        })
+        .attr("width", function(d) {
+            return x(dict[d.Tm]);
+        })
+        .attr("height", y.rangeBand());
+						
+					var barTextsUpdate = bar.select("text")
+					  .transition()
+           .duration(750)
+            .attr("x", function(d) {
+                return x(dict[d.Tm]) + 10;
+            })
+            .attr("y", function(d) {
+                return y(d.Tm) + y.rangeBand() / 2;
+            })
+            .attr("dy", ".35em")
+            .text(function(d) {
+                return dict[d.Tm];
+            });
+
+    };
+    d3.select("#startYear").on("change", function(d) {
+      // recover the option that has been chosen
+      // run the updateChart function with this selected option
+      startYear = document.getElementById("startYear").value
+      endYear = document.getElementById("endYear").value
+      console.log(startYear, endYear)
+      change(datasetTotal, startYear, endYear)
+  })
+  d3.select("#endYear").on("change", function(d) {
+    // recover the option that has been chosen
+    // run the updateChart function with this selected option
+    startYear = document.getElementById("startYear").value
+    endYear = document.getElementById("endYear").value
+    change(datasetTotal, startYear, endYear)
+})
+})
+    </script>
+
+</body>
+
+</html>
