@@ -7,7 +7,7 @@
 // }
 
 // set the dimensions and margins of the graph
-var margin = {top: 10, right: 30, bottom: 30, left: 60},
+var margin = {top: 10, right: 30, bottom: 30, left: 100},
     width = 460 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
@@ -51,7 +51,7 @@ d3.csv("QB_data.csv", function(data) {
       .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
     // add options to y axis button
-    d3.select("#yButton")
+    d3.select("#categoryButton")
       .selectAll('myOptions')
         .data(yGroup)
       .enter()
@@ -76,7 +76,7 @@ d3.csv("QB_data.csv", function(data) {
     var y = d3.scaleLinear()
       .domain([0, d3.max(data, function(d) { return +d.TD; })])
       .range([ height, 0 ]);
-    svg.append("g")
+    var yAxis = svg.append("g")
       .call(d3.axisLeft(y));
 
     // Initialize line with first group of the list
@@ -109,17 +109,17 @@ d3.csv("QB_data.csv", function(data) {
     }
     var mousemove = function(d) {
         Tooltip
-            .html("Team: " + d.Tm + '      ' + "Touchdowns: " + d.TD)  // need to figure out how to do newline
-            // .html("TD: " + d.TD)
-            .style("left", (d3.mouse(this)[0]+70) + "px")
-            .style("top", (d3.mouse(this)[1]) + "px")
+        Tooltip
+        .html("Team: " + d.Tm + "<br>" + "Touchdowns: " + d.TD + "<br>" + "Yards: " + d.Yds + "<br>" + "Game Winning Drives: " + d.GWD * 100 + "<br>" + "Interceptions: " + d.Int + "<br>" + "Completion Percentage: " + d.Cmpp + "%")
+        .style("left", (d3.mouse(this)[0]+70) + "px")
+        .style("top", (d3.mouse(this)[1]) + "px")
     }
     var mouseleave = function(d) {
         Tooltip
             .style("opacity", 0)
     }
 
-    var dot = svg
+    svg
         .selectAll('circle')
         .data(data.filter(function(d){return d.Player==allGroup[0]}))
         .enter()
@@ -138,8 +138,9 @@ d3.csv("QB_data.csv", function(data) {
     playerDict = {play: 'A.J. McCarron'}
 
     // A function that update the chart
-    function update(selectedPlayer, selectedY, startYear, endYear) {
+    function update(selectedPlayer, startYear, endYear, category) {
         // Create new data with the selection?
+        console.log("hi")
         var dataFilter = data.filter(function(d){return d.Player==selectedPlayer})
         console.log(dataFilter)
         // console.log(data.columns[Yds])
@@ -149,17 +150,54 @@ d3.csv("QB_data.csv", function(data) {
         console.log(numTicks)
         x.domain([startYear,endYear])
         xAxis.transition().duration(1000).call(d3.axisBottom(x).ticks(numTicks))
+
+        
         // Give these new data to update line
         console.log(dataFilter)
+        console.log("hi")
+        console.log(category)
         line
             .datum(dataFilter)
             .transition()
             .duration(1000)
             .attr("d", d3.line()
                 .x(function(d) { return x(d.Season) })
-                .y(function(d) { return y(+d.TD) })
+                // .y(function(d) { return y(+d.Int) })
+                .y(function(d) { 
+                  if (category == "Int") { 
+                    y.domain([0, d3.max(data, function(d) { return +d.Int; })])
+                    .range([ height, 0 ]);
+                    yAxis.transition().duration(1000).call(d3.axisLeft(y))
+                    return y(d.Int)
+                  }
+                  if (category == "Yds") { 
+                    y.domain([0, d3.max(data, function(d) { return +d.Yds; })])
+                    .range([ height, 0 ]);
+                    yAxis.transition().duration(1000).call(d3.axisLeft(y))
+                    return y(d.Yds)
+                  }
+                  if (category == "GWD") { 
+                    y.domain([0, d3.max(data, function(d) { return +d.GWD; })])
+                    .range([ height, 0 ]);
+                    yAxis.transition().duration(1000).call(d3.axisLeft(y))
+                    return y(d.GWD)
+                  }
+                  if (category == "TD") { 
+                    y.domain([0, d3.max(data, function(d) { return +d.TD; })])
+                    .range([ height, 0 ]);
+                    yAxis.transition().duration(1000).call(d3.axisLeft(y))
+                    return y(d.TD)
+                  }
+                  if (category == "Cmp%") { 
+                    y.domain([0, d3.max(data, function(d) { return +d.Cmpp; })])
+                    .range([ height, 0 ]);
+                    yAxis.transition().duration(1000).call(d3.axisLeft(y))
+                    return y(d.Cmpp)
+                  }
+                }) 
             )
             .attr("stroke", function(d){ return myColor(selectedPlayer) })
+
         // dot
         //     .data(dataFilter)
         //     .transition()
@@ -173,7 +211,24 @@ d3.csv("QB_data.csv", function(data) {
             .enter()
             .append('circle')
                 .attr('cx', function(d) {return x(d.Season)})
-                .attr('cy', function(d) {return y(+d.TD)})
+                .attr('cy', function(d) {
+                  if (category == "Int") {
+                    return y(+d.Int)
+                  }
+                  if (category == "Yds") { 
+                    return y(+d.Yds)
+                  }
+                  if (category == "GWD") { 
+                    return y(+d.GWD)
+                  }
+                  if (category == "TD") { 
+                    return y(+d.TD)
+                  }
+                  if (category == "Cmp%") { 
+                    return y(+d.Cmpp)
+                  }
+                })
+                // .attr('cy', function(d) {return y(+d.Int)})
                 .attr('r',7)
                 .style('fill', 'black')
                 .on("mouseover", mouseover)
@@ -192,8 +247,23 @@ d3.csv("QB_data.csv", function(data) {
             .transition()
             .duration(1000)
                 .attr("cx", function(d) { return x(+d.Season) })
-                .attr("cy", function(d) { return y(+d.TD) })
-    }
+                .attr('cy', function(d) {
+                  if (category == "Int") { 
+                    return y(+d.Int)
+                  }
+                  if (category == "Yds") { 
+                    return y(+d.Yds)
+                  }
+                  if (category == "GWD") { 
+                    return y(+d.GWD)
+                  }
+                  if (category == "TD") { 
+                    return y(+d.TD)
+                  }
+                  if (category == "Cmp%") { 
+                    return y(+d.Cmpp)
+                  }
+                })}
     // When the button is changed, run the updateChart function
     d3.select("#selectButton").on("change", function(d) {
         // recover the option that has been chosen
@@ -201,7 +271,9 @@ d3.csv("QB_data.csv", function(data) {
         // run the updateChart function with this selected option
         startYear = document.getElementById("startYear").value
         endYear = document.getElementById("endYear").value
-        update(selectedOption, 'Yds', startYear, endYear)
+        var category = d3.select("#categoryButton").property("value")
+
+        update(selectedOption, startYear, endYear, category)
     })
     d3.select("#startYear").on("change", function(d) {
       // recover the option that has been chosen
@@ -209,7 +281,9 @@ d3.csv("QB_data.csv", function(data) {
       // run the updateChart function with this selected option
       startYear = document.getElementById("startYear").value
       endYear = document.getElementById("endYear").value
-      update(selectedOption, 'Yds', startYear, endYear)
+      var category = d3.select("#categoryButton").property("value")
+
+      update(selectedOption, startYear, endYear, category)
   })
   d3.select("#endYear").on("change", function(d) {
     // recover the option that has been chosen
@@ -217,7 +291,18 @@ d3.csv("QB_data.csv", function(data) {
     // run the updateChart function with this selected option
     startYear = document.getElementById("startYear").value
     endYear = document.getElementById("endYear").value
-    update(selectedOption, 'Yds', startYear, endYear)
+    var category = d3.select("#categoryButton").property("value")
+
+    update(selectedOption, startYear, endYear, category)
+})
+d3.select("#categoryButton").on("change", function(d) {
+  // recover the option that has been chosen
+  var selectedOption = d3.select("#selectButton").property("value")
+  // run the updateChart function with this selected option
+  startYear = document.getElementById("startYear").value
+  endYear = document.getElementById("endYear").value
+  var category = d3.select("#categoryButton").property("value")
+  update(selectedOption, startYear, endYear, category)
 })
 
 })
