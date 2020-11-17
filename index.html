@@ -34,17 +34,34 @@
 </head>
 <body>
     <select id="selectButton"></select>
+    <select id="selectButton_player"></select>
     <input type="text" value="2010" id="startYear">
     <input type="text" value="2019" id="endYear">
 
         <div id="my_dataviz"></div>
         <div class="radarChart"></div>
+        <div id="my_dataviz_player"></div>
+
+        <div id="main">
+            <div style="position: absolute; top: 200px;">
+                <div>
+                    <label for="categorySelect">Y Scale:</label>
+                </div>
+                <select id = "categoryButton">
+                </select>
+            </div>
+            <div style="position: absolute; top: 450px; left: 250px;">
+                <div>
+                    <label for="categorySelect">Year</label>
+                </div>
+            </div>
+        </div>
          
 </body>
 <script src="https://d3js.org/d3.v4.js"></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 <script src="./football_wins.js"></script>
-<script src="test.js"></script>
+
 <script>
     console.log('executed')
 </script>
