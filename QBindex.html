@@ -31,17 +31,24 @@
 
 <body>
     <select id="selectButton"></select>
-    <select id="yButton">
-<!--       <option value="Cmp%">Cmp%</option>
-      <option value="Yds">Yds</option>
-      <option selected value="TD">TD</option>
-      <option value="Int">Int</option>
-      <option value="GWD">GWD</option> -->
-    </select>
     <input type="text" value="2010" id="startYear">
     <input type="text" value="2019" id="endYear">
-
         <div id="my_dataviz"></div>
+
+        <div id="main">
+            <div style="position: absolute; top: 200px;">
+                <div>
+                    <label for="categorySelect">Y Scale:</label>
+                </div>
+                <select id = "categoryButton">
+                </select>
+            </div>
+            <div style="position: absolute; top: 450px; left: 250px;">
+                <div>
+                    <label for="categorySelect">Year</label>
+                </div>
+            </div>
+        </div>
 </body>
 
 
@@ -50,7 +57,7 @@
 <!-- Color Scale -->
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 <!-- js Reference -->
-<script src="./QBmain4.js"></script>
+<script src="./QBmain4_2.js"></script>
 <script>
     console.log('executed')
 </script>
